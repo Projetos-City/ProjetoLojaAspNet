@@ -1,11 +1,15 @@
 ﻿using MySql.Data.MySqlClient;
 using ProjetoLoja2dsA.Models;
 using System.Data;
+
+
+
 namespace ProjetoLoja2dsA.Repositorio
 
 {
     public class UsuarioRepositorio(IConfiguration configuration)
     {
+
         // Declara um campo privado somente leitura para armazenar a string de conexão com o MySQL.
         private readonly string _conexaoMySQL = configuration.GetConnectionString("ConexaoMySQL");
 
@@ -13,22 +17,25 @@ namespace ProjetoLoja2dsA.Repositorio
 
         public void AdicionarUsuario(Usuario usuario)
         {
-            using (var db = new MySqlConnection(_conexaoMySQL))
+            using (var conexao = new MySqlConnection(_conexaoMySQL))
             {
-                var cmd = db.CreateCommand();
-                cmd.CommandText = "INSERT INTO Usuario (email,senha) VALUES (@email, @senha)";
-                cmd.Parameters.AddWithValue("@email", usuario.Email);
-                cmd.Parameters.AddWithValue("@senha", usuario.Senha);
+                conexao.Open();
+                var cmd = conexao.CreateCommand();
+                // Cria um novo comando SQL para inserir dados na tabela 'cliente'
+                  cmd.CommandText = "INSERT INTO Usuario (email,senha) VALUES (@email, @senha)"; 
+
+                // Adiciona um parâmetro para o email, definindo seu tipo e valor
+                cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = usuario.Email;
+                // Adiciona um parâmetro para o senha, definindo seu tipo e valor
+                cmd.Parameters.Add("@senha", MySqlDbType.VarChar).Value = usuario.Senha;
+               
+                // Executa o comando SQL de inserção e retorna o número de linhas afetadas
                 cmd.ExecuteNonQuery();
+                // Fecha explicitamente a conexão com o banco de dados 
+                conexao.Close();
+               
             }
         }
-
-
-
-
-
-
-
 
 
         //METODO BUSCAR TODO OS USUARIOS
