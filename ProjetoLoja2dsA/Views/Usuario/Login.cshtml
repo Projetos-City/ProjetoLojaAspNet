@@ -1,11 +1,11 @@
 ﻿
-<link href="~/css/estilo.css" rel="stylesheet" />
+<link href="c:\users\acer\desktop\projetolojaaspnet1\projetoloja2dsa\wwwroot\css\estilo.css" rel="stylesheet" />
 
 <form asp-action="Login" method="post" class="login-form">
 
     <h1 class="login-title">Login</h1>
 
-    <div class="form-group">
+    <div class="form-group" >
         <label>Email:</label>
         <input type="email" name="email" class="form-control" required />
     </div>
@@ -13,20 +13,32 @@
         <label>Senha:</label>
         <input type="password" name="senha" class="form-control" required />
     </div>
-    <button type="submit" class="btn btn-primary">Login</button>
+    <button type="submit" class="btn btn-outline-primary">Login</button>
 
-    <div class="container mt-4">
+    <div class="container p-4 bg-black ">
         <div class="row">
-            <div class="col btn btn-primary">
-                OPÇÃO 1
+            <div class="col btn btn-outline-warning ">
+                Opção 1
             </div>
-            <div class="col">
-                OPÇAO 2
+            <div class="col btn btn-outline-danger">
+                Opção 2
             </div>
-            <div class="col">
-                OPÇÃO 3
+            <div class="col btn btn-outline-success">
+                Opção 3
             </div>
         </div>
     </div>
 
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Menu
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">HTML</a></li>
+            <li><a class="dropdown-item" href="#">CSS</a></li>
+            <li><a class="dropdown-item" href="#">JAVASCRIPT</a></li>
+        </ul>
+    </div>
+
+      
 </form>
