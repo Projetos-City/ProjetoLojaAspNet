@@ -1,0 +1,21 @@
+﻿.login-form{
+    width:300px;
+    margin: 0 auto;
+    padding:20px;
+    border:1px solid #ccc;
+    border-radius:20px;
+    background:#f4f4f4;
+}
+.login-title{
+    text-align:center;
+    color:blue;
+    margin-bottom:20px;
+}
+.form-group{
+    margin-bottom:15px;
+}
+.form-group label{
+    display:block;
+    margin-bottom:10px;
+    font-weight:700;
+}
